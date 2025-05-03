@@ -8,7 +8,6 @@ data = yf.download(stock_symbol, start='2020-01-01', end='2024-01-01')
 
 print(data.head())
 
-# Short-term and long-term moving averages
 short_window = 40
 long_window = 100
 
@@ -26,10 +25,10 @@ shares = 0
 portfolio_value = []
 
 for index, row in data.iterrows():
-    if row['position'].item() == 1 and balance >= row['Close'].item():  # Buy condition
+    if row['position'].item() == 1 and balance >= row['Close'].item():
         shares += 1
         balance -= row['Close'].item()
-    elif row['position'].item() == -1 and shares > 0:  # Sell condition
+    elif row['position'].item() == -1 and shares > 0:
         shares -= 1
         balance += row['Close'].item()
 
